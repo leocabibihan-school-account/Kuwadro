@@ -20,6 +20,7 @@ namespace Kuwaderno.Controllers
 
         public IActionResult Index()
         {
+            //todo send data of artists grouped by genre
             return View();
         }
 
@@ -27,6 +28,27 @@ namespace Kuwaderno.Controllers
         {
             return View();
         }
+
+        public IActionResult About()
+        {
+            //todo add about view
+            return View();
+        }
+
+        public string Search(string name)
+        {
+            return "suppossed to get all results with names " + name;
+        }
+
+        public string Genre(string name)
+        {
+            return "returns all artists with the " + name;
+        }
+
+
+
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
