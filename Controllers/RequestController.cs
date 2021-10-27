@@ -11,7 +11,7 @@ namespace Kuwaderno.Controllers
     {
         public IActionResult Index()
         {
-            //shows first 3 of requested received and sent for the logged in user, displays neither if both r 0
+            //shows first 3 of requested received and sent for the logged in user, displays neither if both r 0  MIKE TEST
             return View();
         }
 
