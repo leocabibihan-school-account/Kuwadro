@@ -35,7 +35,7 @@ namespace Kuwaderno.Controllers
             return View();
         }
 
-        public string Search(string name)
+        public string Search(string name) //todo search keywords
         {
             return "suppossed to get all results with names " + name;
         }

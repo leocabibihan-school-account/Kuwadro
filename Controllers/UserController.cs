@@ -43,6 +43,8 @@ namespace Kuwaderno.Controllers
             return "redirects to profile";
         }
 
+        //add individual art pages
+
         //maybe add reviews?
     }
 }
