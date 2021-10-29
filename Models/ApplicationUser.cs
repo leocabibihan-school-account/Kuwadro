@@ -13,5 +13,10 @@ namespace Kuwaderno.Models
         public string LastName { get; set; }
 
         public string Instagram { get; set; }
+
+        public string ProfilePicture { get; set; }
+
+        
+        
     }
 }
