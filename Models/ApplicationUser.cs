@@ -11,5 +11,7 @@ namespace Kuwaderno.Models
         
         public string FirtName { get; set; }
         public string LastName { get; set; }
+
+        public string Instagram { get; set; }
     }
 }
