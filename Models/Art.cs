@@ -15,6 +15,8 @@ namespace Kuwaderno.Models
 
         public virtual ApplicationUser User { get; set; }
         public int UserId { get; set; }
+
+        public string Genre { get; set; }
         
     }
 }
