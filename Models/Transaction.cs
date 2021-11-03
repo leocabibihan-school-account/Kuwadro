@@ -12,16 +12,16 @@ namespace Kuwaderno.Models
         [Key]
         public int Id { get; set; }
 
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser BuyerUser { get; set; }
         public int BuyerId { get; set; }
 
-        //public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser SellerUser { get; set; }
         public int SellerId { get; set; }
 
         public string Request { get; set; }
         public string Review { get; set; } 
-        public int satisfactionRating { get; set; }
-        public bool requestAccepted { get; set; }
+        public int? SatisfactionRating { get; set; }
+        public bool RequestAccepted { get; set; }
         
 
 

@@ -18,6 +18,8 @@ namespace Kuwaderno.Data
         }
 
         public DbSet<Art> artList { get; set; }
+
+        public DbSet<Transaction> transactions { get; set; }
         
     }
 }
