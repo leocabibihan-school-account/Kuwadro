@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using Kuwaderno.Data;
 using Kuwaderno.Models;
 
+using Microsoft.AspNetCore.Http;
+using System.IO;
+
 namespace Kuwaderno.Controllers
 {
     public class ArtsController : Controller
@@ -54,15 +57,37 @@ namespace Kuwaderno.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Image,Title,Description,CreationDate,UserId")] Art art)
+        public async Task<IActionResult> Create([Bind("Id,Image,Title,Description,CreationDate,UserId")] Art art, IFormFile ImagePath)
         {
+
+
             if (ModelState.IsValid)
             {
+
+
+                if (ImagePath != null)
+                {
+                    if (ImagePath.Length > 0)
+                    {
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(),
+                            "wwwroot/img/artworks", ImagePath.FileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            ImagePath.CopyTo(stream);
+                        }
+                        art.Image = ImagePath.FileName;
+                    }
+                }
                 _context.Add(art);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+
             return View(art);
+
+
         }
 
         // GET: Arts/Edit/5
@@ -149,5 +174,7 @@ namespace Kuwaderno.Controllers
         {
             return _context.artList.Any(e => e.Id == id);
         }
+
+
     }
 }
