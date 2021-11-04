@@ -57,26 +57,27 @@ namespace Kuwaderno.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Image,Title,Description,CreationDate,UserId")] Art art, IFormFile ImagePath)
+        public async Task<IActionResult> Create([Bind("Id,Image,Title,Description,CreationDate,UserId")] Art art, IFormFile Image)
         {
 
+            System.Diagnostics.Debug.WriteLine(Image);
 
             if (ModelState.IsValid)
             {
 
 
-                if (ImagePath != null)
+                if (Image != null)
                 {
-                    if (ImagePath.Length > 0)
+                    if (Image.Length > 0)
                     {
                         var filePath = Path.Combine(Directory.GetCurrentDirectory(),
-                            "wwwroot/img/artworks", ImagePath.FileName);
+                            "wwwroot/img/artworks", Image.FileName);
 
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
-                            ImagePath.CopyTo(stream);
+                            Image.CopyTo(stream);
                         }
-                        art.Image = ImagePath.FileName;
+                        art.Image = Image.FileName;
                     }
                 }
                 _context.Add(art);
