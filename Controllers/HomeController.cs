@@ -31,14 +31,14 @@ namespace Kuwaderno.Controllers
             //now I realize I didn't update the database
             foreach (Art art in _context.artList.ToList())
             {
-                if (!artByGenre.ContainsKey(art.Genre))
-                {
-                    artByGenre.Add(art.Genre, new List<Art> { art });
-                }
-                else
-                {
-                    artByGenre[art.Genre].Add(art);
-                }
+               // if (!artByGenre.ContainsKey(art.Genre))
+                //{
+               //     artByGenre.Add(art.Genre, new List<Art> { art });
+               // }
+               // else
+               // {
+                //    artByGenre[art.Genre].Add(art);
+               // }
                 
             }
 

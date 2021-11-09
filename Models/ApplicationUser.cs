@@ -16,7 +16,7 @@ namespace Kuwaderno.Models
 
         public string ProfilePicture { get; set; }
 
-        
+        public string Background { get; set; }
         
     }
 }

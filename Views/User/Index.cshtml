@@ -1,0 +1,91 @@
+﻿@model Kuwaderno.Models.ProfilePageModel;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel='stylesheet' href='~/css/profile-design.css'>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://fonts.googleapis.com/css?family=Saira Semi Condensed' rel='stylesheet'>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+        
+
+    </head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Kuwadro</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-item home"><a class="optionss" href="../Updated Home/index.html">Home</a></li>
+                    <li class="menu-item"><a class="optionss" href="../AboutUs/About.html">Who are we?</a></li>
+                    <li class="menu-item"><a class="optionss" href="../UploadArtwork/Upload.html">Post your work</a></li>
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-pic" src="images/WhoTao.png" alt="">
+                <div class="profile-text">
+                    <div class="dropdown">
+                        <button class="dropbtn">Choose</button>
+                        <div class="dropdown-content">
+                          <a href="../Profile2.0/profile.html">Profile</a>
+                          <a href="../Login/Login.html">Logout</a>
+                        </div>
+                      </div>
+                 
+                </div>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=container>
+        <div class="profile">
+
+            <div class="profile-content">              
+                <img class="profile-picture" src="images/WhoTao.png">
+                <p class="profile-name">George Angelo</p>
+                <div class="profile-line"></div>
+                <p class="profile-rating">5.0</p>
+                <p class="profile-about">"People die if they are killed"</p>
+            </div>
+        </div>
+        <ul class="second-navbar-list">
+            <li><a href="default.asp">Gallery</a></li>
+            <li><a href="news.asp">Review</a></li>
+            <li><a href="contact.asp">About</a></li>
+            <li><a href="about.asp">Commissions</a></li>
+        </ul>
+        <div class="Gallery">
+
+            @foreach (var item in Model.ArtList)
+            {
+                <div class="Pictors">
+
+                    <img class="Viktor" src="~/img/artworks/@(item.Image)">
+                    <div class="pictoverlay pictoverlay-blur">
+                        <div class="imgtitle">@(item.Title)</div>
+                        <p class="description">@(item.Description)</p>
+                        <a href="Artwork.html" class="Open"><p class="OpenB">Open Artwork</p></a>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+    <script src="Profile.js">
+    </script>
+    
+</body>
+</html>

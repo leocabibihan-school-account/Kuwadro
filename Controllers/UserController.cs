@@ -1,18 +1,46 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Kuwaderno.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using Kuwaderno.Models;
 
 namespace Kuwaderno.Controllers
 {
     public class UserController : Controller
     {
         //use IActionResult instead of string
-        public string Index(int id)
+
+        private readonly ApplicationDbContext _context;
+
+        public UserController(ApplicationDbContext context)
         {
-            //this is the gallery
-            return "this should show the profile of a given user";
+            _context = context;
+        }
+
+        
+        public IActionResult Index(string id)
+        {
+            var user = _context.Users.Where(User => User.Id == id).SingleOrDefault();
+            if(user == null)
+            {
+                return View();
+            }
+            var arts = _context.artList
+                 .Where(p => p.User.Id == id)
+                 .OrderBy(p => p.CreationDate).ToList();
+
+
+            var record = new ProfilePageModel()
+            {
+                ArtList = arts,
+                User = user
+            };
+
+            return View(record);
         }
 
         public string Upload(int id)
