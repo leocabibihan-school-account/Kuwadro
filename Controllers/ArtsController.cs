@@ -10,6 +10,8 @@ using Kuwaderno.Models;
 
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kuwaderno.Controllers
 {
@@ -47,6 +49,7 @@ namespace Kuwaderno.Controllers
         }
 
         // GET: Arts/Create
+        [Authorize]//forces user to sign in
         public IActionResult Create()
         {
             return View();
@@ -61,7 +64,8 @@ namespace Kuwaderno.Controllers
         {
 
             System.Diagnostics.Debug.WriteLine(Image);
-
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             if (ModelState.IsValid)
             {
 
@@ -80,6 +84,8 @@ namespace Kuwaderno.Controllers
                         art.Image = Image.FileName;
                     }
                 }
+                art.UserId = userId;
+                art.User = user;
                 _context.Add(art);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -27,7 +27,8 @@ namespace Kuwaderno.Controllers
             var user = _context.Users.Where(User => User.Id == id).SingleOrDefault();
             if(user == null)
             {
-                return View();
+                //return 404
+                return BadRequest();
             }
             var arts = _context.artList
                  .Where(p => p.User.Id == id)
@@ -51,7 +52,7 @@ namespace Kuwaderno.Controllers
         [HttpPost]
         public string Upload(int id, Object record)
         {
-            //takes the request body and returns some data
+            //403 if not authorized
             return "this page allows takes the request body and redirects";
         }
 
