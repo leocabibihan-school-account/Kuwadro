@@ -60,6 +60,7 @@ namespace Kuwaderno.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id,Image,Title,Description,CreationDate,UserId")] Art art, IFormFile Image)
         {
 

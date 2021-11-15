@@ -87,7 +87,7 @@ namespace Kuwaderno.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { FirtName 
-                    = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, Email = Input.Email };
+                    = Input.FirstName, LastName = Input.LastName, UserName = Input.Email, Email = Input.Email, EmailConfirmed = true };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
