@@ -2,6 +2,9 @@
 @{
     Layout = null;
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
 
@@ -18,6 +21,9 @@
 
     </head>
 <body>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        var currentUser = await UserManager.GetUserAsync(User);
     <div class="navbar">
         <div class="navbar-container">
             <div class="logo-container">
@@ -55,7 +61,7 @@
 
             <div class="profile-content">              
                 <img class="profile-picture" src="images/WhoTao.png">
-                <p class="profile-name">George Angelo</p>
+                <p class="profile-name">@(currentUser.FirtName) @(currentUser.LastName)</p>
                 <div class="profile-line"></div>
                 <p class="profile-rating">5.0</p>
                 <p class="profile-about">"People die if they are killed"</p>
@@ -69,7 +75,8 @@
         </ul>
         <h1></h1>
         <div class="Gallery">
-
+            @foreach (var yellow in currentUser.Id)
+            {
             @foreach (var item in Model.ArtList)
             {
                 @(item.User)
@@ -84,8 +91,10 @@
 
                 </div>
             }
+            }
         </div>
     </div>
+    }
     <script src="Profile.js">
     </script>
     
