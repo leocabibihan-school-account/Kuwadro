@@ -7,9 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using Kuwaderno.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Kuwaderno.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         //use IActionResult instead of string

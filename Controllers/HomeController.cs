@@ -29,7 +29,7 @@ namespace Kuwaderno.Controllers
             //stupid linq groupby doesn't work so I'll implement it myself
             
             //now I realize I didn't update the database
-            foreach (Art art in _context.artList.ToList())
+            //foreach (Art art in _context.artList.ToList())
             {
                // if (!artByGenre.ContainsKey(art.Genre))
                 //{
